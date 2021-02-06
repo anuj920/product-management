@@ -1,0 +1,98 @@
+.Mycontainer{
+    padding: 1% 10%;
+}
+
+.main-content{
+    padding: 15px 30px 40px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 1px 1px 0 rgb(0 0 0 / 12%);
+}
+
+.main{
+    display: flex;
+}
+
+@media only screen and (max-width: 992px){
+    .Mycontainer{
+        padding: 1% 30px;
+    }
+    
+}
+
+@media only screen and (max-width: 767px){
+    .Mycontainer{
+        padding: 1% 12.5px;
+    }
+}
+
+@media only screen and (max-width: 556px){
+    .Mycontainer{
+        padding: 1% 7.5px;
+    }
+    
+}
+
+
+section{
+    margin: 30px 0;
+}
+
+label{
+    position: absolute;
+    top: -12px;
+    background: white;
+    left: 5px;
+    padding : 0 .75rem;
+    pointer-events:none;
+    transition: .5s;
+    font-size: 14px !important;
+}
+
+th:hover{
+    cursor: pointer;
+}
+
+th,td{
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+    padding-left: 5px;
+}
+
+tr{
+    border-bottom: 1px solid #E0E0E0;
+}
+
+thead{
+    border-bottom: 1px solid #E0E0E0;
+    border-top: 1px solid #E0E0E0;
+    background-color: #F5F5F5;
+}
+
+tbody tr{
+    font-weight: 500;
+    color: #616161;
+}
+
+tbody tr:hover{
+    color: #304FFE;
+    cursor: pointer;
+}
+
+i{
+    font-size: 22px;
+}
+
+.inputBox{
+    position: relative;
+}
+
+.inputBox input
+{
+    width:100%;
+    // margin-bottom:30px;
+    background-color:#fff !important;
+}
+
+  

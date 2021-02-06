@@ -1,0 +1,84 @@
+<div class="container">
+    <section>
+
+        <div class="main-content">
+            <div class="table-responsive webview">
+                <button class="my-btn-success" style="margin-bottom: 20px;" *ngIf="!edit" (click)="addNewProduct()">add Product</button>
+                <table class="table table-hover"> 
+                    <thead>
+                        <tr>
+                            <th style="width: 75px !important;">S No. 
+                            </th>
+                            <th style="width: 30%;" (click)="sortByValue('name')">Name 
+                                <span *ngIf="sortingCase.name && !edit">
+                                    <span *ngIf="sortingCase.name_ASC"><i class="fas fa-caret-up"></i></span>
+                                    <span *ngIf="!sortingCase.name_ASC"><i class="fas fa-caret-down"></i></span>
+                                </span>
+                            </th>
+                            <th style="width: 30%;" (click)="sortByValue('cate')">Category Name
+                                <span *ngIf="sortingCase.cate && !edit">
+                                    <span *ngIf="sortingCase.cate_ASC"><i class="fas fa-caret-up"></i></span>
+                                    <span *ngIf="!sortingCase.cate_ASC"><i class="fas fa-caret-down"></i></span>
+                                </span>
+                            </th>
+                            <th style="width: 30%;" (click)="sortByValue('sub')">Sub Category Name
+                                <span *ngIf="sortingCase.sub && !edit">
+                                    <span *ngIf="sortingCase.sub_ASC"><i class="fas fa-caret-up"></i></span>
+                                    <span *ngIf="!sortingCase.sub_ASC"><i class="fas fa-caret-down"></i></span>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="productList.length>0">
+                        <tr *ngFor="let item of productList; let index = index">
+                            <td *ngIf="!item.edit">{{index + 1}}</td>
+                            <td  *ngIf="!item.edit">{{ item.name }}</td>
+                            <td  *ngIf="!item.edit">{{ item.category_name}}</td>
+                            <td  *ngIf="!item.edit">{{item.subcategory_name }}</td>
+
+                            <td *ngIf="item.edit">
+                                <button class="my-btn-success" (click)="createProduct()">Save</button>
+                            </td>
+                            <td *ngIf="item.edit">
+                                <div class="inputBox">
+                                    <input autocomplete="false" type="text" [(ngModel)]="newProduct.name" class="form-control" name="product-name">
+                                    <label class="m-lab">Product Name</label>
+                                  </div>
+                            </td>
+                            <td *ngIf="item.edit">
+                                <div class="inputBox">
+                                    <select class="form-control" (change)="getSubCategory(category_id.value)" #category_id='ngModel' name="category" [(ngModel)]="newProduct.category_id" required>
+                                      <option class="font-13 text-capitalize" selected>Select Category</option>
+                                      <option class="font-13 text-capitalize" *ngFor="let item of categoryList" [value]="item.id">{{item.name}}</option>
+                                    </select>
+                                    <label class="m-lab">Category</label>
+                                    <span class="text-danger" *ngIf="(category_id.errors?.required && category_id.touched)">Category is required</span>
+                                </div>
+                            </td>
+                            <td *ngIf="item.edit">
+                                <div class="inputBox">
+                                    <select class="form-control" [disabled]="!newProduct.category_id" #subcategory_id='ngModel' name="subcategory" [(ngModel)]="newProduct.subcategory" required>
+                                      <option class="font-13 text-capitalize" selected>Select SubCategory</option>
+                                      <option class="font-13 text-capitalize" *ngFor="let item of subCategoryList" [value]="item.id">{{item.name}}</option>
+                                    </select>
+                                    <label class="m-lab">Sub Category</label>
+                                    <span class="text-danger" *ngIf="(subcategory_id.errors?.required && subcategory_id.touched)">Sub Category is required</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody style="background-color: #f0f0f0;" *ngIf="productList.length == 0">
+                        <tr>
+                          <td colspan="6" class="noDataFound">
+                            <h1 class="text-center text-muted"><i class="far fa-frown"></i></h1>
+                            <h5 class="text-center text-muted">No Data Found</h5>
+                          </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </section>
+</div>

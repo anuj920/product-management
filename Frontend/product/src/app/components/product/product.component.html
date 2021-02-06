@@ -57,7 +57,7 @@
                             <td *ngIf="item.edit">
                                 <div class="inputBox">
                                     <select class="form-control" (change)="getSubCategory(category_id.value)" #category_id='ngModel' name="category" [(ngModel)]="newProduct.category_id" required>
-                                      <option class="font-13 text-capitalize" selected>Select Category</option>
+                                      <option class="font-13 text-capitalize" value="" selected>Select Category</option>
                                       <option class="font-13 text-capitalize" *ngFor="let item of categoryList" [value]="item.id">{{item.name}}</option>
                                     </select>
                                     <label class="m-lab">Category</label>
@@ -67,7 +67,7 @@
                             <td *ngIf="item.edit">
                                 <div class="inputBox">
                                     <select class="form-control" [disabled]="!newProduct.category_id" #subcategory_id='ngModel' name="subcategory" [(ngModel)]="newProduct.subcategory" required>
-                                      <option class="font-13 text-capitalize" selected>Select SubCategory</option>
+                                      <option class="font-13 text-capitalize" value="" selected>Select SubCategory</option>
                                       <option class="font-13 text-capitalize" *ngFor="let item of subCategoryList" [value]="item.id">{{item.name}}</option>
                                     </select>
                                     <label class="m-lab">Sub Category</label>

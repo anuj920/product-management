@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit, ElementRef} from '@angular/core';
 import { ServiceService } from '../service.service';
 import { SortDefault, ProductElement } from './product.entity';
 
@@ -22,6 +22,13 @@ export class ProductComponent implements OnInit{
     "sub" : "subcategory_name",
     "cate": "category_name"
   }
+  toast:any = {
+    show:false,
+    type:'',
+    msg:''
+  }
+
+  @ViewChild('product_element', {static:false}) tableContent!:ElementRef
 
   constructor(private service: ServiceService) { 
     this.sortingCase = new SortDefault()
@@ -64,12 +71,15 @@ export class ProductComponent implements OnInit{
         new_product['edit'] = false
         this.productList.push(new_product)
         this.newProduct = new ProductElement();
-        this.newProduct.category_id = new_product.category_id
         this.edit = false
+        this.showToast("Product Added To the Table", "_success", 4000)
+      },
+      err=>{
+        this.showToast("There is some Server issue", "_error", 4000)
       })
     }
     else{
-
+      this.showToast("Product name, Sub category Can't be empty", "_error", 10000)
     }
   }
 
@@ -98,6 +108,18 @@ export class ProductComponent implements OnInit{
     let product = new ProductElement()
     this.productList.push(product)
     this.edit = true
+    setTimeout(() => {
+      this.tableContent.nativeElement.scroll({ top: this.tableContent.nativeElement.scrollHeight, behavior: 'smooth' });
+    }, 100);
+  }
+
+  showToast(msg:string, type:string, time:number){
+    this.toast.msg = msg
+    this.toast.type = type
+    this.toast.show = true
+    setTimeout(() => {
+      this.toast.show = false
+    }, time);
   }
 
 

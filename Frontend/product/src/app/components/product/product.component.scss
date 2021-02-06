@@ -14,6 +14,39 @@
     display: flex;
 }
 
+#product-content{
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+._success{
+    background-color: #8BC34A;
+}
+
+._error{
+    background-color: #E9052A;
+    opacity: 0.9;
+}
+
+.toast{
+    float: right;
+    height: 30px;
+    color: white;
+    padding: 3px 10px 3px 15px;
+    text-align: right;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.close{
+    margin-left: 30px;
+    color: white;
+    font-size: 16px;
+    color: black;
+}
+
 @media only screen and (max-width: 992px){
     .Mycontainer{
         padding: 1% 30px;

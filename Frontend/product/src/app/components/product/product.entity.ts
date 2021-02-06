@@ -9,6 +9,7 @@ export class SortDefault{
 }
 
 export class ProductElement {
+    id!:number
     name: string = ''
     category_name: string = ''
     subcategory_name: string = ''

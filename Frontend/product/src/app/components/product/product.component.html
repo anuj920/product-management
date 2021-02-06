@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody *ngIf="productList.length>0">
-                        <tr *ngFor="let item of productList; let index = index">
+                        <tr *ngFor="let item of productList; let index = index; trackBy:trackById">
                             <td *ngIf="!item.edit">{{index + 1}}</td>
                             <td  *ngIf="!item.edit">{{ item.name }}</td>
                             <td  *ngIf="!item.edit">{{ item.category_name}}</td>

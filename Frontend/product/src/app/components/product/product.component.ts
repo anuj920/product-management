@@ -40,6 +40,10 @@ export class ProductComponent implements OnInit{
     this.getProduct()
   }
 
+  trackById(item:any, index:any){
+    return item.id
+  }
+
   getCategory(){
     this.service.get('categorylist/').subscribe(res=>{
       this.categoryList = res
